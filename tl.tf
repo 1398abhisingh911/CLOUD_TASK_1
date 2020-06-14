@@ -37,7 +37,7 @@ tags = {
 resource "aws_instance" "myos" {
   ami           = "ami-0447a12f28fddb066"
   instance_type = "t2.micro"
-  key_name = "cloud-task"
+  key_name = "day3"
   security_groups = [ "allow_http" ]
 
   connection {
