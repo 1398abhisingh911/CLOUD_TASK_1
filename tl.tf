@@ -43,7 +43,7 @@ resource "aws_instance" "myos" {
     agent    = "false"
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
+    private_key = file("/a/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -90,7 +90,7 @@ depends_on = [
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
+    private_key = file("/a/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -119,7 +119,7 @@ depends_on = [
 ]
   bucket       = "1398abhisingh911"
   key          = "aa.jpg "
-  source       = "C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/aa.jpg "
+  source       = "/a/aa.jpg "
   acl          = "public-read"
   content_type = "image or jpg"
 }
