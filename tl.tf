@@ -43,7 +43,7 @@ resource "aws_instance" "myos" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
+    private_key = file("/a/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -90,7 +90,7 @@ depends_on = [
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
+    private_key = file("/a/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -107,7 +107,6 @@ provisioner "remote-exec" {
 resource "aws_s3_bucket" "b" {
   bucket = "1398abhisingh911"
   acl    = "public-read"
-  source = "/a/aa.jpg "
 tags = {
     Name = "1398abhisingh911"
   }
