@@ -107,6 +107,7 @@ provisioner "remote-exec" {
 resource "aws_s3_bucket" "b" {
   bucket = "1398abhisingh911"
   acl    = "public-read"
+  source = "/a/aa.jpg "
 tags = {
     Name = "1398abhisingh911"
   }
