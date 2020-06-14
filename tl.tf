@@ -2,7 +2,6 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-
 resource "aws_security_group" "allow_http" {
   name        = "allow_http"
 ingress {
@@ -41,9 +40,10 @@ resource "aws_instance" "myos" {
   security_groups = [ "allow_http" ]
 
   connection {
+    agent    = "false"
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("/a/day3.pem")
+    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -90,7 +90,7 @@ depends_on = [
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("/a/day3.pem")
+    private_key = file("C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/day3.pem")
     host     = aws_instance.myos.public_ip
   }
 
@@ -107,9 +107,21 @@ provisioner "remote-exec" {
 resource "aws_s3_bucket" "b" {
   bucket = "1398abhisingh911"
   acl    = "public-read"
+
 tags = {
     Name = "1398abhisingh911"
   }
+}
+
+resource "aws_s3_bucket_object" "s3obj" {
+depends_on = [
+  aws_s3_bucket.b,
+]
+  bucket       = "1398abhisingh911"
+  key          = "aa.jpg "
+  source       = "C:/Users/196AKS/Desktop/Cloud Intern/Terraform/task1/aa.jpg "
+  acl          = "public-read"
+  content_type = "image or jpg"
 }
 
 locals {
